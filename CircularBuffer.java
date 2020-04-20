@@ -29,7 +29,7 @@ public class CircularBuffer {
   public int write(int len, byte[] buf_in) {
     int write_len = Math.min(len, this.size_ - this.len_);
   
-    int end = this.start_ + this.len_;
+    int end = (this.start_ + this.len_) % this.size_;
     int first_len = Math.min(write_len, this.size_ - end); 
     System.arraycopy(buf_in, 0, this.buf_, end, first_len);
   
